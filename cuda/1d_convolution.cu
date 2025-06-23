@@ -16,10 +16,10 @@ __global__ void convolution_1d_kernel(
     float res = 0.0f;
 
     for (int j = 0; j < kernel_size; j++) {
-        sum += input[idx + j] * kernel[j];
+        res += input[idx + j] * kernel[j];
     }
 
-    output[i] = res;      
+    output[idx] = res;      
 }
 
 // input, kernel, output are device pointers (i.e. pointers to memory on the GPU)
