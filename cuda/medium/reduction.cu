@@ -19,7 +19,7 @@ __global__ void reduction_kernel(const float* input, float* output, int N) {
 
 // input, output are device pointers
 void solve(const float* input, float* output, int N) {  
-    int threads = 1 << 8;
+    int threads = 1 << 10;
     int blocks = (N + 2 * threads - 1) / (2 * threads);
     reduction_kernel<<<blocks, threads, threads * sizeof(float)>>>(input, output, N);
     cudaDeviceSynchronize();
